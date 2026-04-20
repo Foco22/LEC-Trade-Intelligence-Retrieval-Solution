@@ -2,8 +2,6 @@
 
 Production-grade RAG system for London Export Corporation. Clara is the internal knowledge assistant that answers questions about UK trade regulations, WTO policy, and FSA food guidance — grounded strictly in indexed documents.
 
-**Stack:** MongoDB Atlas (vector + BM25) · `bge-small-en-v1.5` embeddings · cross-encoder reranker · FastAPI · Streamlit
-
 ---
 
 ## Folder structure
