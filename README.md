@@ -2,6 +2,10 @@
 
 Production-grade RAG system for London Export Corporation. Clara is the internal knowledge assistant that answers questions about UK trade regulations, WTO policy, and FSA food guidance — grounded strictly in indexed documents.
 
+**Live demo:**
+- Chat (Clara): https://lec-retrieval-380463151129.northamerica-northeast1.run.app/
+- API docs: https://lec-retrieval-380463151129.northamerica-northeast1.run.app/api/docs
+
 ---
 
 ## Folder structure
