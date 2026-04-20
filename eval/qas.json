@@ -1,0 +1,182 @@
+[
+  {
+    "query": "What topic is covered under the Industry guidance section related to farming?",
+    "answer": "Dairy and farming",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_importing_drinks",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "What qualifies as a new build according to the VAT refunds for new builds guidelines?",
+    "answer": "A new build is a building that has been constructed from scratch and will generally not incorporate any part of an existing building.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_vat_refunds_for_new_builds_if_youre_a_diy_housebui",
+    "relevant_topics": [
+      "robotics"
+    ]
+  },
+  {
+    "query": "What is the link to the list of approved food establishments in England & Wales?",
+    "answer": "https://data.food.gov.uk/catalog/datasets/1e61736a-2a1a-4c6a-b8b1-e45912ebc8e3",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_approved_establishments",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "What are the requirements for insurers to carry on business in a prudent manner?",
+    "answer": "Insurers must have the ability to carry on its business in a prudent manner, have a satisfactory fit and proper policy for directors and certain senior officers, have a proper risk management programme, be registered or qualify to be registered as a financial services provider, have a current financial strength rating from an approved rating agency unless exempted, comply with all conditions of licence, and comply with any other relevant legislation.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_eu_2022",
+    "relevant_topics": [
+      "eu_trade_policy"
+    ]
+  },
+  {
+    "query": "What are some topics included under consumer advice related to food safety and hygiene?",
+    "answer": "Glycerol, food additives and E numbers, best before and use-by dates, home food fact checker, providing food at community and charity events, handling flour and flour products safely.",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_approved_establishments",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "What does Table 3.12 in the document cover?",
+    "answer": "Table 3.12 covers Brazilian development bank support from 2017 to 2021.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_hong_kong_2022",
+    "relevant_topics": [
+      "hong_kong_trade"
+    ]
+  },
+  {
+    "query": "What is the minimum academic requirement for applying to a Pupil Barrister position?",
+    "answer": "A minimum of a 2:2 honours in a qualifying law degree, or a minimum of a 2:2 honours undergraduate degree in a non-law subject and a minimum of a pass in a GDL/PGDL or CPE, or equivalent academic qualifications as recognised by the Bar Standards Board.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_government_legal_service_gls_legal_trainee_scheme",
+    "relevant_topics": [
+      "employment"
+    ]
+  },
+  {
+    "query": "What does the term 'important data' refer to according to the authorities?",
+    "answer": "The term 'important data' refers to significance from a national perspective.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_china_2024",
+    "relevant_topics": [
+      "china_trade_policy"
+    ]
+  },
+  {
+    "query": "What is a medical device?",
+    "answer": "A medical device is a healthcare product or piece of equipment that a person uses for a medical purpose. It is not a medicine or drug.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_medical_devices_information_for_users_and_patients",
+    "relevant_topics": [
+      "robotics"
+    ]
+  },
+  {
+    "query": "How many Regional Trade Agreements (RTAs) had China signed by the end of February 2021?",
+    "answer": "By the end of February 2021, China had signed 19 RTAs with 26 countries and territories.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_china_2021",
+    "relevant_topics": [
+      "china_trade_policy"
+    ]
+  },
+  {
+    "query": "What do wholesale food businesses supplying food of animal origin require for approval?",
+    "answer": "Approval by the competent authority under Regulation 853/2004.",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_approved_establishments",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "What topics does the guidance on documents for British people abroad cover?",
+    "answer": "The guidance covers legalising and certifying UK documents, marriage and civil partnership documents, affirmations and affidavits, and witnessing signatures.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_living_in_indonesia",
+    "relevant_topics": [
+      "employment"
+    ]
+  },
+  {
+    "query": "What is the focus of the National Food Crime Unit?",
+    "answer": "The National Food Crime Unit focuses on food crime.",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_approved_establishments",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "What types of products are subject to China's universal import tariff quotas?",
+    "answer": "Wheat, corn, rice, cotton, sugar, wool and wool tops, and chemical fertilizers.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_china_2024",
+    "relevant_topics": [
+      "china_trade_policy"
+    ]
+  },
+  {
+    "query": "What do some co-operation agreements between UK Export Finance and other export credit agencies allow?",
+    "answer": "Some of the agreements allow UK Export Finance and the other export credit agency to reinsure each other where exporters from both countries are supplying goods and services to the same buyer.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_export_finance_and_insurance_international_agreeme",
+    "relevant_topics": [
+      "china_import"
+    ]
+  },
+  {
+    "query": "What are the key manufacturing industries listed in the 12th Five-Year Plan?",
+    "answer": "The key manufacturing industries listed in the 12th Five-Year Plan are: equipment, shipbuilding, automobiles, iron and steel, non-ferrous metals, building materials, petrochemicals, light industry and textiles.",
+    "source": "wto",
+    "doc_id": "wto_wto_tpr_china_2016",
+    "relevant_topics": [
+      "china_trade_policy"
+    ]
+  },
+  {
+    "query": "What topics are covered under Food safety and hygiene?",
+    "answer": "Food poisoning, Food safety and hygiene at home, Eating out, parties and events, Food allergies, intolerances, and coeliac disease, Chemical food safety, GM and novel foods, Food safety in emergencies, More in Food safety and hygiene.",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_importing_drinks",
+    "relevant_topics": [
+      "beverages"
+    ]
+  },
+  {
+    "query": "Who should make the application for approval of cross-country pipelines linking duty-suspended installations?",
+    "answer": "The application for approval should be made by the owner of the pipeline, or by the operator where ownership is vested in the Crown.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_motor_and_heating_fuels_general_information_and_ac",
+    "relevant_topics": [
+      "robotics"
+    ]
+  },
+  {
+    "query": "What must prawns have gone through to be imported for authorised use?",
+    "answer": "Prawns must have been through an industrial process.",
+    "source": "govuk",
+    "doc_id": "govuk_guidance_check_if_you_can_pay_less_duty_if_your_goods_are_i",
+    "relevant_topics": [
+      "china_import"
+    ]
+  },
+  {
+    "query": "What is Hoasca tea from Brazil used for?",
+    "answer": "Hoasca tea from Brazil is used for religious purposes.",
+    "source": "fsa",
+    "doc_id": "fsa_fsa_importing_drinks",
+    "relevant_topics": [
+      "beverages"
+    ]
+  }
+]

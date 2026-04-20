@@ -1,0 +1,21 @@
+{
+  "top_k": 5,
+  "n_queries": 20,
+  "results": {
+    "semantic": {
+      "precision@5": 0.44,
+      "recall@5": 0.9,
+      "ndcg@5": 0.8074
+    },
+    "hybrid": {
+      "precision@5": 0.44,
+      "recall@5": 0.9,
+      "ndcg@5": 0.8074
+    },
+    "hybrid_rerank": {
+      "precision@5": 0.49,
+      "recall@5": 0.9,
+      "ndcg@5": 0.8259
+    }
+  }
+}

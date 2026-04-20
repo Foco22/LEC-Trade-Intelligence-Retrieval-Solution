@@ -1,0 +1,30 @@
+# Corpus downloader
+requests
+markitdown[pdf]
+
+# Embeddings & reranker (local, no API key)
+sentence-transformers
+
+# MongoDB
+motor
+pymongo
+
+# API
+fastapi
+uvicorn[standard]
+
+# Frontend
+streamlit
+nest-asyncio
+
+# Evaluation
+numpy
+pandas
+
+# Tests
+pytest
+pytest-asyncio
+
+# Config
+pydantic-settings
+python-dotenv
