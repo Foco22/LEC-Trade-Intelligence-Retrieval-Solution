@@ -32,4 +32,4 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run tests
-        run: pytest tests/ -v --tb=short 2>&1 || pytest tests/ --collect-only 2>&1; exit 0
+        run: pytest tests/ -v --tb=long -p no:cacheprovider
