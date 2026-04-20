@@ -26,6 +26,9 @@ pandas
 pytest
 pytest-asyncio
 
+# LLM
+openai
+
 # Config
 pydantic-settings
 python-dotenv
