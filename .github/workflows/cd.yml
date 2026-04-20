@@ -1,0 +1,58 @@
+name: CD
+
+on:
+  push:
+    branches: ["master", "main"]
+
+env:
+  REGION: us-central1
+  SERVICE: lec-retrieval
+  REPO: lec
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Create Artifact Registry repo (if not exists)
+        run: |
+          gcloud artifacts repositories describe $REPO \
+            --location=$REGION \
+            --project=${{ secrets.GCP_PROJECT_ID }} || \
+          gcloud artifacts repositories create $REPO \
+            --repository-format=docker \
+            --location=$REGION \
+            --project=${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Configure Docker
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build and push image
+        run: |
+          IMAGE=${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPO }}/${{ env.SERVICE }}:${{ github.sha }}
+          docker build -t $IMAGE .
+          docker push $IMAGE
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy ${{ env.SERVICE }} \
+            --image=${{ env.IMAGE }} \
+            --region=${{ env.REGION }} \
+            --project=${{ secrets.GCP_PROJECT_ID }} \
+            --platform=managed \
+            --allow-unauthenticated \
+            --port=8080 \
+            --memory=2Gi \
+            --cpu=2 \
+            --set-env-vars="OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }},MONGODB_CONNECTION_STRING=${{ secrets.MONGODB_CONNECTION_STRING }},MONGODB_DB=lec-project,MONGODB_COLLECTION=embeddings,EMBEDDING_MODEL=BAAI/bge-small-en-v1.5,OPENAI_MODEL=gpt-4o-mini,LLM_PRICE_INPUT=0.150,LLM_PRICE_OUTPUT=0.600"

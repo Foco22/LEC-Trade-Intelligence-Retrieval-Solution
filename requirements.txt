@@ -16,6 +16,7 @@ uvicorn[standard]
 # Frontend
 streamlit
 nest-asyncio
+supervisor
 
 # Evaluation
 numpy

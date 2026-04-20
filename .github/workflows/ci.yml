@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: ["master", "main"]
+  pull_request:
+    branches: ["master", "main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      MONGODB_CONNECTION_STRING: ${{ secrets.MONGODB_CONNECTION_STRING }}
+      MONGODB_DB: lec-project
+      MONGODB_COLLECTION: embeddings
+      EMBEDDING_MODEL: BAAI/bge-small-en-v1.5
+      OPENAI_MODEL: gpt-4o-mini
+      LLM_PRICE_INPUT: "0.150"
+      LLM_PRICE_OUTPUT: "0.600"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/ -v
