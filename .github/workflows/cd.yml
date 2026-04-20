@@ -12,6 +12,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
 
     steps:
       - uses: actions/checkout@v4
@@ -23,35 +25,35 @@ jobs:
 
       - name: Set up gcloud
         uses: google-github-actions/setup-gcloud@v2
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Set GCP project
+        run: |
+          echo "Project ID length: ${#GCP_PROJECT_ID}"
+          gcloud config set project "$GCP_PROJECT_ID"
 
       - name: Create Artifact Registry repo (if not exists)
         run: |
           gcloud artifacts repositories describe $REPO \
-            --location=$REGION \
-            --project=${{ secrets.GCP_PROJECT_ID }} || \
+            --location=$REGION || \
           gcloud artifacts repositories create $REPO \
             --repository-format=docker \
-            --location=$REGION \
-            --project=${{ secrets.GCP_PROJECT_ID }}
+            --location=$REGION
 
       - name: Configure Docker
-        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+        run: gcloud auth configure-docker $REGION-docker.pkg.dev --quiet
 
       - name: Build and push image
         run: |
-          IMAGE=${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.REPO }}/${{ env.SERVICE }}:${{ github.sha }}
+          IMAGE=$REGION-docker.pkg.dev/$GCP_PROJECT_ID/$REPO/$SERVICE:${{ github.sha }}
           docker build -t $IMAGE .
           docker push $IMAGE
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
 
       - name: Deploy to Cloud Run
         run: |
-          gcloud run deploy ${{ env.SERVICE }} \
+          gcloud run deploy $SERVICE \
             --image=$IMAGE \
-            --region=${{ env.REGION }} \
-            --project=${{ secrets.GCP_PROJECT_ID }} \
+            --region=$REGION \
             --platform=managed \
             --allow-unauthenticated \
             --port=8080 \
