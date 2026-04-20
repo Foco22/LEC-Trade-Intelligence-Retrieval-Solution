@@ -16,7 +16,7 @@ async def lifespan(app: FastAPI):
     mongo.close()
 
 
-app = FastAPI(title="LEC Retrieval API", lifespan=lifespan)
+app = FastAPI(title="LEC Retrieval API", lifespan=lifespan, root_path="/api")
 
 
 # ── Endpoints ────────────────────────────────────────
