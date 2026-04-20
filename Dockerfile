@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+
 EXPOSE 8080
 
 CMD ["supervisord", "-c", "/app/supervisord.conf"]
