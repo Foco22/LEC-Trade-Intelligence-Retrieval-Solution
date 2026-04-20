@@ -8,11 +8,12 @@ from src.utils.mongodb import mongo
 load_dotenv()
 
 
-@pytest.fixture(autouse=True, scope="session")
+@pytest.fixture(autouse=True)
 def connect_mongo():
+    mongo._client = None
     mongo.connect()
     yield
-    mongo.close()
+    mongo._client = None
 
 
 # ── 1. Ingesta ───────────────────────────────────────
