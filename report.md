@@ -65,6 +65,7 @@ Clara is a production-grade RAG system built for London Export Corporation that 
 | LLM | GPT-4o-mini via OpenAI API |
 | API | FastAPI |
 | Frontend | Streamlit |
+| Monitoring | LangSmith (query traces + LLM call tracking) |
 | Infra | Docker · GitHub Actions CI/CD · Google Cloud Run |
 
 ---
