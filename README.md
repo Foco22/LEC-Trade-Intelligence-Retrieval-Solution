@@ -6,7 +6,7 @@ Production-grade RAG system for London Export Corporation. Clara is the internal
 - Chat (Clara): https://lec-retrieval-380463151129.northamerica-northeast1.run.app/
 - API docs: https://lec-retrieval-380463151129.northamerica-northeast1.run.app/api/docs
 
-> **Note — cold start:** The service runs on Cloud Run with no minimum instances. The first request after a period of inactivity may take ~60 seconds to respond while the container loads the embedding and reranker models. Subsequent requests are fast.
+> **Cold start warning:** The service runs on Cloud Run with no minimum instances. Since there are no active users keeping it warm, the container spins down after inactivity. On first load, expect ~90 seconds of wait while the embedding and reranker models load. **Open both links at the same time** — Clara and the API docs — so they wake up together. Once loaded, all subsequent requests are fast.
 
 ---
 
