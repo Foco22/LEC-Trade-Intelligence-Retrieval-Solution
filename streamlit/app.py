@@ -46,8 +46,38 @@ tab_chat, tab_eval, tab_status = st.tabs(["Chat", "Evaluation", "Ingesta Status"
 # TAB 1 — CHAT
 # ════════════════════════════════════════════════════
 
+WELCOME_MSG = {"role": "assistant", "content": "Hi! I'm Clara, your LEC knowledge assistant."}
+
+def new_thread():
+    import uuid
+    tid = str(uuid.uuid4())
+    st.session_state.threads[tid] = {"name": "New chat", "messages": [WELCOME_MSG.copy()]}
+    st.session_state.current_thread = tid
+
+if "threads" not in st.session_state:
+    st.session_state.threads = {}
+    new_thread()
+
+if "current_thread" not in st.session_state or st.session_state.current_thread not in st.session_state.threads:
+    new_thread()
+
 with tab_chat:
     with st.sidebar:
+        st.title("Conversations")
+        if st.button("+ New chat", use_container_width=True):
+            new_thread()
+            st.rerun()
+
+        st.divider()
+        for tid, thread in st.session_state.threads.items():
+            label = thread["name"]
+            is_active = tid == st.session_state.current_thread
+            if st.button(label, key=f"thread_{tid}", use_container_width=True,
+                         type="primary" if is_active else "secondary"):
+                st.session_state.current_thread = tid
+                st.rerun()
+
+        st.divider()
         st.title("Filters")
         source = st.selectbox("Source", SOURCES)
         topic  = st.selectbox("Topic",  TOPICS)
@@ -64,24 +94,26 @@ with tab_chat:
     if not metadata_filter:
         metadata_filter = None
 
+    current = st.session_state.threads[st.session_state.current_thread]
+    messages = current["messages"]
+
     st.title("Clara")
     st.caption("Your LEC knowledge assistant. Ask me anything about UK trade regulations, import duties, beverages licensing, and more.")
 
-    if "messages" not in st.session_state:
-        st.session_state.messages = [
-            {"role": "assistant", "content": "Hi! I'm Clara, your LEC knowledge assistant."}
-        ]
-
     messages_container = st.container(height=520)
     with messages_container:
-        for msg in st.session_state.messages:
+        for msg in messages:
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
 
     query = st.chat_input("Ask a question...")
 
     if query:
-        st.session_state.messages.append({"role": "user", "content": query})
+        # Auto-name the thread on first user message
+        if current["name"] == "New chat":
+            current["name"] = query[:40] + ("..." if len(query) > 40 else "")
+
+        messages.append({"role": "user", "content": query})
         with messages_container:
             with st.chat_message("user"):
                 st.markdown(query)
@@ -99,7 +131,7 @@ with tab_chat:
             with st.spinner("Generating answer..."):
                 history = [
                     {"role": m["role"], "content": m["content"]}
-                    for m in st.session_state.messages[1:-1]  # skip welcome msg and current query
+                    for m in messages[1:-1]  # skip welcome msg and current query
                 ]
                 response = generate.answer(query=query, results=results, history=history)
 
@@ -121,7 +153,7 @@ with tab_chat:
                     c3.metric("Reranker", f"{r.scores.reranker:.3f}")
                     st.divider()
 
-            st.session_state.messages.append({"role": "assistant", "content": response.content})
+            messages.append({"role": "assistant", "content": response.content})
 
 
 # ════════════════════════════════════════════════════
@@ -198,16 +230,3 @@ with tab_status:
     topic_rows = [{"Topic": t, "Chunks": n} for t, n in sorted(topic_counts.items(), key=lambda x: -x[1])]
     st.dataframe(topic_rows, use_container_width=True)
 
-    st.subheader("Files on Disk vs MongoDB")
-    corps = Path("corps")
-    file_counts = {}
-    for folder in ["govuk", "wto", "fsa"]:
-        p = corps / folder
-        file_counts[folder] = len(list(p.glob("*"))) if p.exists() else 0
-
-    total_files = sum(file_counts.values())
-    f1, f2, f3, f4 = st.columns(4)
-    f1.metric("Total files", total_files, delta=f"{total_docs - total_files:+d} vs MongoDB")
-    f2.metric("GOV.UK files", file_counts["govuk"], delta=f"{by_src_docs.get('govuk',0) - file_counts['govuk']:+d}")
-    f3.metric("WTO files",    file_counts["wto"],   delta=f"{by_src_docs.get('wto',0)   - file_counts['wto']:+d}")
-    f4.metric("FSA files",    file_counts["fsa"],   delta=f"{by_src_docs.get('fsa',0)   - file_counts['fsa']:+d}")
