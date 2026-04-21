@@ -138,7 +138,7 @@ I think RAG has a big two problems, and i would choose here:
 
     -**People ask how they want**: RAG is getting short in the scope, because people are tirdy to ask, so you need to have a layer of thinking before to answwer a question.  Besides, you need to have a layer of validation as well.
 
----
+
 
 ## What I'd ship next with one more week
 
