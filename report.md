@@ -98,20 +98,20 @@ My point: ¿What strategy should i use if i have a workflow document?. I think i
 I focus in the answer, not in the parameters, so dependen of the files, it can be different type of parameters. 
 
 
-### When does BM25 beat semantic? Failure modes
+### When does BM25 beat semantic?
 
 **BM25 wins** when the query contains exact terminology that the embedding model generalises away:
 
 - `"HS code 2203 beer import"` — BM25 matches the exact code; semantic retrieves documents about beer generally and may rank the wrong product category higher.
 - `"Article 17.1 WTO Agreement"` — BM25 finds the exact article reference; semantic retrieves thematically related passages that never contain that string.
-- Rare proper nouns, regulation IDs, and product codes are BM25's domain.
 
 **Semantic wins** when the user paraphrases or uses different vocabulary than the document:
 
 - `"rules about bringing alcohol into the UK"` matches documents that say "import duty on beverages" — BM25 scores zero, semantic retrieves correctly.
 - Cross-lingual or domain-shifted queries (e.g. a non-expert asking about something an expert document calls by a technical name).
 
-**Hybrid + reranker** is the robust default precisely because neither alone covers both failure modes.
+**Hybrid + reranker** is the robust precisely because neither alone covers both failure modes.
+
 
 ### Cost per 1,000 queries projected
 
@@ -129,6 +129,14 @@ Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMRespo
 _* Input token average measured with `tiktoken` across the 20 evaluation queries (`eval/count_tokens.py`). Output tokens estimated; to be updated with LangSmith trace data._
 
 Retrieval and embeddings are free — local models, MongoDB Atlas free tier. The dominant cost is LLM generation.
+
+### What problems?
+
+I think RAG has a big two problems, and i would choose here:
+
+    - **Business Oportunity**: No one want to system only give you answer, they want to work with you. RAG are hard to measure because there is not clear bussines KPI to measure the scuessuc, so it must to move this logic to agent that can work into a bussines process. 
+
+    -**People ask how they want**: RAG is getting short in the scope, because people are tirdy to ask, so you need to have a layer of thinking before to answwer a question.  Besides, you need to have a layer of validation as well.
 
 ---
 
