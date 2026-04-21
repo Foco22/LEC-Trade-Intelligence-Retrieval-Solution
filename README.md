@@ -50,28 +50,6 @@ docker run --env-file .env -p 8080:8080 lec-retrieval
 
 > **Note:** The vector store and document index live in MongoDB Atlas. You will need a valid `MONGODB_CONNECTION_STRING` in your `.env` pointing to an Atlas cluster with the corpus already indexed. Without it the container starts but all search and chat requests will fail.
 
-### Without Docker
-
-```bash
-# 1. Install dependencies
-pip install -r requirements.txt
-
-# 2. Copy and fill in credentials
-cp .env.example .env
-
-# 3. Create MongoDB Atlas indexes (one-time)
-python create_vector_index.py
-
-# 4. Download and index corpus
-python -m src.ingesta.ingest
-
-# 5. Start Streamlit frontend
-streamlit run streamlit/app.py
-
-# 6. Or start the API
-uvicorn api.main:app --reload
-```
-
 ### API usage
 
 ```bash
