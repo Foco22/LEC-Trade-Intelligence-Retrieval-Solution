@@ -89,11 +89,14 @@ Clara is a production-grade RAG system built for London Export Corporation that 
 
 ### Which chunk size wins and why
 
-The honest answer is: the exact token count matters less than the chunking strategy.
+To be honest, i think that chunk strategy is not matter regarding the exactly number of token and token overlap. 
 
-Best practices (and benchmarks on retrieval-augmented tasks) converge around 2,000–2,200 tokens with ~200 token overlap. Spending engineering time sweeping 256 / 512 / 1024 produces marginal NDCG gains that disappear when the embedding model changes.
+There is a good practice brenchmarks that converge around 2.000-2.200 tokens with -200 token overlap. Spending time if the best number is 1900 or 1500 does not counts. I would spend time more thinking chunks strategy based on type of files more numbers.
 
-What actually moves the needle is matching the chunking unit to the document's semantic structure. GOV.UK guidance and WTO policy documents are written with `##` headers that mark genuine topic boundaries — a section on "import duties" is a coherent retrieval unit. Chunking by header rather than by fixed token count means each chunk corresponds to something a human would call an "answer", not an arbitrary window. That is the architectural decision, and it is where the value is.
+My point: ¿What strategy should i use if i have a workflow document?. I think i need to capture the whole diagram and their explanation, and then transform to chunks more than capture chunks of the whole file. 
+
+I focus in the answer, not in the parameters, so dependen of the files, it can be different type of parameters. 
+
 
 ### When does BM25 beat semantic? Failure modes
 
