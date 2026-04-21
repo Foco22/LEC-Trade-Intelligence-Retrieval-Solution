@@ -97,7 +97,11 @@ with tab_chat:
                     results = run_async(retrieval.hybrid_rerank_search(query=query, top_k=top_k, metadata_filter=metadata_filter))
 
             with st.spinner("Generating answer..."):
-                response = generate.answer(query=query, results=results)
+                history = [
+                    {"role": m["role"], "content": m["content"]}
+                    for m in st.session_state.messages[1:-1]  # skip welcome msg and current query
+                ]
+                response = generate.answer(query=query, results=results, history=history)
 
             st.markdown(response.content)
 

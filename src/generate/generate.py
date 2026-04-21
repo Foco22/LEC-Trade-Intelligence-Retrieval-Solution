@@ -12,10 +12,15 @@ class Generate:
         self._prompt = PROMPT_PATH.read_text(encoding="utf-8")
 
     @traceable(name="clara-answer")
-    def answer(self, query: str, results: list[SearchResult]) -> LLMResponse:
+    def answer(
+        self,
+        query: str,
+        results: list[SearchResult],
+        history: list[dict] | None = None,
+    ) -> LLMResponse:
         context = self._build_context(results)
         prompt  = self._prompt.format(context=context, question=query)
-        return self._llm.generate(system_prompt=prompt, user_prompt=query)
+        return self._llm.generate(system_prompt=prompt, user_prompt=query, history=history)
 
     def _build_context(self, results: list[SearchResult]) -> str:
         chunks = []
