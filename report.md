@@ -116,16 +116,16 @@ What actually moves the needle is matching the chunking unit to the document's s
 
 ### Cost per 1,000 queries projected
 
-Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMResponse`. GPT-4o-mini pricing: $0.150 / 1M input · $0.600 / 1M output (source: https://developers.openai.com/api/docs/pricing).
+Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMResponse`. Token counts measured across the 20 QA pairs using `tiktoken`. GPT-4o-mini pricing: $0.150 / 1M input · $0.600 / 1M output (source: https://developers.openai.com/api/docs/pricing).
 
-| Component | Cost per query | Cost per 1,000 queries |
-|---|---|---|
-| Input tokens (~1,200) | $0.00018 | $0.18 |
-| Output tokens (~300) | $0.00018 | $0.18 |
-| Embeddings (local) | $0.00000 | $0.00 |
-| Reranker (local) | $0.00000 | $0.00 |
-| Cloud Run (2 vCPU / 2Gi, ~2s/query) | ~$0.00002 | ~$0.02 |
-| **Total** | **~$0.00038** | **~$0.38** |
+| Component | Avg per query | Cost per query | Cost per 1,000 queries |
+|---|---|---|---|
+| Input tokens | 1,566 | $0.000235 | $0.235 |
+| Output tokens (~300 est.) | ~300 | $0.000180 | $0.180 |
+| Embeddings (local) | — | $0.000000 | $0.00 |
+| Reranker (local) | — | $0.000000 | $0.00 |
+| Cloud Run (2 vCPU / 2Gi, ~2s/query) | — | ~$0.000020 | ~$0.02 |
+| **Total** | | **~$0.000435** | **~$0.44** |
 
 Retrieval and embeddings are free — local models, MongoDB Atlas free tier. The dominant cost is LLM generation.
 
