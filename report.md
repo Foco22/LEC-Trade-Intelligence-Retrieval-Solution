@@ -124,9 +124,10 @@ Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMRespo
 | Output tokens (~300) | $0.00018 | $0.18 |
 | Embeddings (local) | $0.00000 | $0.00 |
 | Reranker (local) | $0.00000 | $0.00 |
-| **Total** | **~$0.00036** | **~$0.36** |
+| Cloud Run (2 vCPU / 2Gi, ~2s/query) | ~$0.00002 | ~$0.02 |
+| **Total** | **~$0.00038** | **~$0.38** |
 
-Retrieval is free — local models, MongoDB Atlas free tier. The only cost is LLM generation.
+Retrieval and embeddings are free — local models, MongoDB Atlas free tier. The dominant cost is LLM generation.
 
 ---
 
