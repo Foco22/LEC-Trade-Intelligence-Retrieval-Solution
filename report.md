@@ -93,7 +93,7 @@ To be honest, i think that chunk strategy is not matter regarding the exactly nu
 
 There is a good practice brenchmarks that converge around 2.000-2.200 tokens with -200 token overlap. Spending time if the best number is 1900 or 1500 does not counts. I would spend time more thinking chunks strategy based on type of files more numbers.
 
-My point: ¿What strategy should i use if i have a workflow document?. I think i need to capture the whole diagram and their explanation, and then transform to chunks more than capture chunks of the whole file. 
+My point: ¿What strategy should i use if i have a workflow document?. I think i need to capture the whole diagram and their explanation, and then transform to chunks more than divide the file into a chunks.
 
 I focus in the answer, not in the parameters, so dependen of the files, it can be different type of parameters. 
 
