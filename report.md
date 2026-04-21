@@ -141,11 +141,13 @@ I think RAG has a big two problems and are below:
 
 ## What I'd ship next with one more week
 
-**Analytics and session store.** You cannot improve what you do not measure. The first thing I would ship is a database of sessions and conversations. Every query, every result, every response — logged. Without this, iteration is guesswork.
+**Analytics and session store.** You cannot improve what you do not measure. The first thing I would ship is a database of sessions and conversations. Every query, every result, every response. Without this, iteration is guesswork.
 
 **Conversation triage agent.** Once sessions are stored, I would run an agent over all conversations to automatically label and characterise ones with low engagement or failed answers. The agent flags what went wrong, clusters failure types, and feeds that signal back into evaluation. You cannot learn if you do not know where you are failing.
 
 **Move RAG to a tool inside an agent.** The current architecture returns the 20 nearest chunks and summarises them. That breaks on complex queries: *"Give me the difference between FSA and GOV.UK guidance on the same topic"* requires reading across sources, planning sub-queries, and synthesising. RAG as a tool inside a reasoning agent — one that can decide to query multiple times, compare results, and structure its own answer — handles this. The retrieval pipeline stays; what changes is the orchestration layer above it.
+
+For other hand, this would provide the agent with memory, allowing me to supply the most frequently asked questions so it can respond more quickly.
 
 **Live ingestion pipeline.** Trade regulations change daily. I would build a scheduled process that monitors source URLs for changes, re-indexes updated documents, and removes stale ones from MongoDB — keeping the corpus current without manual intervention.
 
