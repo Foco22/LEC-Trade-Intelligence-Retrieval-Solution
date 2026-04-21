@@ -145,11 +145,11 @@ I think RAG has a big two problems and are below:
 
 **Conversation triage agent.** Once sessions are stored, I would run an agent over all conversations to automatically label and characterise ones with low engagement or failed answers. The agent flags what went wrong, clusters failure types, and feeds that signal back into evaluation. You cannot learn if you do not know where you are failing.
 
-**Move RAG to a tool inside an agent.** The current architecture returns the 20 nearest chunks and summarises them. That breaks on complex queries: *"Give me the difference between FSA and GOV.UK guidance on the same topic"* requires reading across sources, planning sub-queries, and synthesising. RAG as a tool inside a reasoning agent — one that can decide to query multiple times, compare results, and structure its own answer — handles this. The retrieval pipeline stays; what changes is the orchestration layer above it.
+**Move RAG to a tool inside an agent.** The current architecture returns the 20 nearest chunks and summarises them. That breaks on complex queries: *"Give me the difference between FSA and GOV.UK guidance on the same topic"* requires reading across sources, planning sub-queries, and synthesising. RAG as a tool inside a reasoning agent, one that can decide to query multiple times, compare results, and structure its own answer. The retrieval pipeline stays; what changes is the orchestration layer above it.
 
 For other hand, this would provide the agent with memory, allowing me to supply the most frequently asked questions so it can respond more quickly.
 
-**Live ingestion pipeline.** Trade regulations change daily. I would build a scheduled process that monitors source URLs for changes, re-indexes updated documents, and removes stale ones from MongoDB — keeping the corpus current without manual intervention.
+**Live ingestion pipeline.** Trade regulations change daily. I would build a scheduled process that monitors source URLs for changes, re-indexes updated documents, and removes stale ones from MongoDB. The idea is to keeping the corpus current without manual intervention.
 
 **People and process.** The backend is the easy part. Before shipping to real users I would meet with key LEC stakeholders to define what success looks like — which questions Clara should answer well, which it should decline, and how employees will actually use it in their workflow. Technology is a solved problem here; adoption is not.
 
