@@ -1,4 +1,5 @@
 from pathlib import Path
+from langsmith import traceable
 from src.retrieval.retrieval import SearchResult
 from src.utils.llm import LLM, LLMResponse
 
@@ -10,6 +11,7 @@ class Generate:
         self._llm    = LLM()
         self._prompt = PROMPT_PATH.read_text(encoding="utf-8")
 
+    @traceable(name="clara-answer")
     def answer(self, query: str, results: list[SearchResult]) -> LLMResponse:
         context = self._build_context(results)
         prompt  = self._prompt.format(context=context, question=query)

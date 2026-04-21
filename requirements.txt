@@ -28,6 +28,7 @@ pytest-asyncio
 
 # LLM
 openai
+langsmith
 
 # Config
 pydantic-settings

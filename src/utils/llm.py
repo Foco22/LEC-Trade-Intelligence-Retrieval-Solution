@@ -2,6 +2,7 @@ import os
 from dataclasses import dataclass
 from dotenv import load_dotenv
 from openai import OpenAI
+from langsmith.wrappers import wrap_openai
 
 load_dotenv()
 
@@ -17,7 +18,7 @@ class LLMResponse:
 class LLM:
     def __init__(self):
         self._model = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
-        self._client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+        self._client = wrap_openai(OpenAI(api_key=os.environ["OPENAI_API_KEY"]))
 
     def generate(self, system_prompt: str, user_prompt: str) -> LLMResponse:
         price_input  = float(os.getenv("LLM_PRICE_INPUT",  "0.150"))
