@@ -43,10 +43,12 @@ lec-retrieval/
 # 1. Copy and fill in credentials
 cp .env.example .env
 
-# 2. Build and run the API
+# 2. Build and run
 docker build -t lec-retrieval .
-docker run --env-file .env -p 8000:8000 lec-retrieval
+docker run --env-file .env -p 8080:8080 lec-retrieval
 ```
+
+> **Note:** The vector store and document index live in MongoDB Atlas. You will need a valid `MONGODB_CONNECTION_STRING` in your `.env` pointing to an Atlas cluster with the corpus already indexed. Without it the container starts but all search and chat requests will fail.
 
 ### Without Docker
 
