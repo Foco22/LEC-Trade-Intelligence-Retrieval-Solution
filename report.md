@@ -113,10 +113,6 @@ I focus in the answer, not in the parameters, so dependen of the files, it can b
 
 **Hybrid + reranker** is the robust default precisely because neither alone covers both failure modes.
 
-### Cold-cache vs warm-cache latency profile
-
-`[ PENDING — to be measured with time curl against live endpoint ]`
-
 ### Cost per 1,000 queries projected
 
 Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMResponse`. Token counts measured across the 20 QA pairs using `tiktoken`. GPT-4o-mini pricing: $0.150 / 1M input · $0.600 / 1M output (source: https://developers.openai.com/api/docs/pricing).
