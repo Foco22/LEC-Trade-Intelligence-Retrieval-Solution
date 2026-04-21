@@ -127,6 +127,8 @@ Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMRespo
 | Cloud Run (2 vCPU / 2Gi, ~2s/query) | — | ~$0.000020 | ~$0.02 |
 | **Total** | | **~$0.000435** | **~$0.44** |
 
+_* Input token average measured with `tiktoken` across the 20 evaluation queries (`eval/count_tokens.py`). Output tokens estimated; to be updated with LangSmith trace data._
+
 Retrieval and embeddings are free — local models, MongoDB Atlas free tier. The dominant cost is LLM generation.
 
 ---
