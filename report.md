@@ -116,13 +116,17 @@ What actually moves the needle is matching the chunking unit to the document's s
 
 ### Cost per 1,000 queries projected
 
-Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMResponse`. At GPT-4o-mini pricing ($0.150 / 1M input · $0.600 / 1M output):
+Every query tracks `input_tokens`, `output_tokens`, and `cost_usd` via `LLMResponse`. GPT-4o-mini pricing: $0.150 / 1M input · $0.600 / 1M output (source: https://developers.openai.com/api/docs/pricing).
 
-- Average observed: ~1,200 input tokens + ~300 output tokens per query
-- Cost per query: ~$0.00018 + ~$0.00018 = **~$0.00036**
-- **Projected cost per 1,000 queries: ~$0.36**
+| Component | Cost per query | Cost per 1,000 queries |
+|---|---|---|
+| Input tokens (~1,200) | $0.00018 | $0.18 |
+| Output tokens (~300) | $0.00018 | $0.18 |
+| Embeddings (local) | $0.00000 | $0.00 |
+| Reranker (local) | $0.00000 | $0.00 |
+| **Total** | **~$0.00036** | **~$0.36** |
 
-Retrieval is free (local models, MongoDB Atlas free tier). The bottleneck cost is purely LLM generation.
+Retrieval is free — local models, MongoDB Atlas free tier. The only cost is LLM generation.
 
 ---
 
