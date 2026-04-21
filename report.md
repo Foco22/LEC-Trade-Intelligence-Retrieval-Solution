@@ -151,10 +151,23 @@ For other hand, this would provide the agent with memory, allowing me to supply 
 
 **Live ingestion pipeline.** Trade regulations change daily. I would build a scheduled process that monitors source URLs for changes, re-indexes updated documents, and removes stale ones from MongoDB. The idea is to keeping the corpus current without manual intervention.
 
-**People and process.** The backend is the easy part. Before shipping to real users I would meet with key LEC stakeholders to define what success looks like — which questions Clara should answer well, which it should decline, and how employees will actually use it in their workflow. Technology is a solved problem here; adoption is not.
+**People and process.** The backend is the easy part. Before shipping to real users I would meet with key LEC stakeholders to define what success looks like, which questions Clara should answer well, which it should decline, and how employees will actually use it in their workflow. Technology is a solved problem here; adoption is not.
 
 ---
 
 ## AI Usage
 
-`[ PENDING ]`
+I would split this section into what I used AI for and what I did not use it for.
+
+**Usage AI**
+- The majority of the code was generated with AI. I guided the agent step by step, providing the structure and reviewing all classes and functions.
+- The README and report were developed collaboratively with AI. However, I initiated them and continuously reviewed and refined them to achieve the best possible version.
+
+**Not Usage AI**
+- Solution architecture: I selected the tools and frameworks based on my previous experience, as I have used them before.
+- Folder and code structure: I designed a scalable and reusable structure. That is why I created modules such as llm.py or embedding.py, allowing flexibility to switch providers without changing the entire codebase.
+- The “next steps” section was written based on my own judgement of what is valuable for this product, drawing from my experience.
+- The deployment section was implemented using CI/CD, but I personally configured the setup in Google Cloud, including Cloud Run and service accounts.
+
+
+
