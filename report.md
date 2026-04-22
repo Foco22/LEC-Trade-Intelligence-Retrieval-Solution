@@ -98,6 +98,7 @@ My point: ¿What strategy should i use if i have a workflow document?. I think i
 I focus in the answer, not in the parameters, so dependen of the files, it can be different type of parameters. 
 
 
+
 ### When does BM25 beat semantic?
 
 **BM25 wins** when the query contains exact terminology that the embedding model generalises away:
@@ -134,9 +135,9 @@ Retrieval and embeddings are free — local models, MongoDB Atlas free tier. The
 
 I think RAG has a big two problems and are below:
 
-**Business Oportunity**: No one want to system only give you answer, they want to work with you. RAG are hard to measure because there is not clear bussines KPI to measure the scuessuc, so it must to move this logic to agent that can work into a bussines process. 
+**Business Oportunity**: No one wants a system that only gives you answers; they want to work with you. RAG systems are hard to measure because there are no clear business KPIs to evaluate their success, so this logic needs to be moved to agents that can operate within a business process.
 
-**People ask how they want**: RAG is getting short in the scope, because people are tirdy to ask, so you need to have a layer of thinking before to answer a question.  Besides, you need to have a layer of validation as well.
+**People ask how they want (in their ways)**: RAG is becoming limited in scope because people get tired of asking questions, so you need a layer of reasoning before answering. Besides, you also need a validation layer.
 
 
 ## What I'd ship next with one more week
